@@ -1,5 +1,4 @@
-FROM ubuntu
-RUN apt-get update && apt update && apt-get install -y sudo nfs-common openssh-client
+FROM manish2296lion/sudoubuntu:tagname
 USER root
 ENV HOME /root
 RUN mkdir /home/data
