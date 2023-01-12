@@ -1,4 +1,7 @@
 FROM ubuntu
-RUN apt-get update
-RUN apt install -y tcpdump
-RUN echo $(tcpdump)
+RUN apt-get update && apt update && apt-get install -y sudo nfs-common openssh-client
+USER root
+ENV HOME /root
+RUN mkdir /home/data
+RUN mount -t nfs fs-0e7955a26ee765a8f.efs.cn-north-1.amazonaws.com.cn:/imranen103245846-pvc-450662d0-bf96-4dc7-b7ff-984f2c9b3c8d /home/data
+RUN SLEEP 1200000
